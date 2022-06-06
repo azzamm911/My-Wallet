@@ -7,156 +7,260 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Akshar&family=Beau+Rivage&family=Bebas+Neue&family=League+Spartan&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="main.js"></script>
     <title>My Wallet</title>
 </head>
 <style>
-    
     body {
-        
         box-sizing: border-box;
+        font-family: 'Bebas Neue', cursive;
+        background-color: beige;        
     }
 
     button {
         height: 30px;
 
+    }    
+
+    .first-container-cont {
+        height: 500px;
+        width: 420px;
     }
 
-    #table-row {
+    #prior-list,
+    #exp-list {
+        background-color: #97DBAE;
+    }
+
+    #bal-list {
+        background-color: #F4BBBB;
+    }
+
+    #table-row-0,
+    #table-row-1,
+    #table-row-2,
+    #table-row-3,
+    #table-row-4,
+    #table2-row-0,
+    #table2-row-1,
+    #table2-row-2,
+    #table2-row-3,
+    #table2-row-4 {
         height: 50px;
+    }
+
+    .in-btn:not([disabled]):hover {
+        color: white !important;
+        background-color: magenta !important;
+        transition: 0.3s !important;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    #graph-container {
+        background-color: #F9F9F9 !important ;
+    }
+
+    #calc-container {
+        background-color: #CCF3EE !important;
+    }
+
+    #calc-input,
+    #calc_output {
+        letter-spacing: 5px;
+    }
+
+    #calc-input {
+        outline: none;
+    }
+
+    .bottom-r-calc-container button {
+        background-color: #F1E1A6;
+    }
+
+    .bottom-r-calc-container button:not([disabled]):hover,
+    .bottom-l-calc-container button:not([disabled]):hover {
+        opacity: 75%;
+        font-size: 25px;
+    }
+
+    .bottom-l-calc-container button {
+        background-color: #CEE5D0;
     }
 </style>
 
-<body class="bg-secondary" onload="loadPriority(), disableButton()">
-    <div class="container-fluid px-0">
-        <div class="row my-4 mx-4">
+<body onload="loadPriority(), disableButton()">
+    <div class="container-fluid px-0 main-container">
+        <div class="row my-4 mx-4 w-auto first-container">
 
             <!-- Priority List -->
-            <div class="col-4 px-5 py-5 border rounded bg-light shadow-sm" id="prior-list" style="height: 500px; width: 420px;">
+            <div class="col-4 px-5 py-5 border-0 rounded shadow first-container-cont" id="prior-list">
                 <h3 class="text-center">My Priority List</h3>
                 <div class="d-flex flex-column">
-                    <div class="border border-bottom-0 rounded-top row py-2" id="table-row">
+                    <div class="border-0 rounded-top row py-2" id="table-row-0">
                         <div class="col-8">
-                            <p id="pr_0"></p>
+                            <p class="mb-0" id="pr_0"></p>
                         </div>
                         <div class="col-2">
-                            <p id="pr-rating-0"></p>
+                            <p class="mb-0" id="pr-rating-0"></p>
                         </div>
                         <div class="col-2">
-                            <button class="border-0" id="btn-delete-0" onclick="deletePriority(0)">-</button>
+                            <button class="border-0 rounded w-100 h-75 text-center in-btn" id="btn-delete-0"
+                                onclick="deletePriority(0)">-</button>
                         </div>
                     </div>
-                    <div class="border border-bottom-0 row py-2" id="table-row">
+                    <div class="border border-bottom-0 border-start-0 border-end-0 row py-2" id="table-row-1">
                         <div class="col-8">
-                            <p id="pr_1"></p>
+                            <p class="mb-0" id="pr_1"></p>
                         </div>
                         <div class="col-2">
-                            <p id="pr-rating-1"></p>
+                            <p class="mb-0" id="pr-rating-1"></p>
                         </div>
                         <div class="col-2">
-                            <button class="border-0" id="btn-delete-1" onclick="deletePriority(1)">-</button>
+                            <button class="border-0 rounded w-100 h-75 text-center in-btn" id="btn-delete-1"
+                                onclick="deletePriority(1)">-</button>
                         </div>
                     </div>
-                    <div class="border border-bottom-0 row py-2" id="table-row">
+                    <div class="border border-bottom-0 border-start-0 border-end-0 row py-2" id="table-row-2">
                         <div class="col-8">
-                            <p id="pr_2"></p>
+                            <p class="mb-0" id="pr_2"></p>
                         </div>
                         <div class="col-2">
-                            <p id="pr-rating-2"></p>
+                            <p class="mb-0" id="pr-rating-2"></p>
                         </div>
                         <div class="col-2">
-                            <button class="border-0" id="btn-delete-2" onclick="deletePriority(2)">-</button>
+                            <button class="border-0 rounded w-100 h-75 text-center in-btn" id="btn-delete-2"
+                                onclick="deletePriority(2)">-</button>
                         </div>
                     </div>
-                    <div class="border border-bottom-0 row py-2" id="table-row">
+                    <div class="border border-bottom-0 border-start-0 border-end-0 row py-2" id="table-row-3">
                         <div class="col-8">
-                            <p id="pr_3"></p>
+                            <p class="mb-0" id="pr_3"></p>
                         </div>
                         <div class="col-2">
-                            <p id="pr-rating-3"></p>
+                            <p class="mb-0" id="pr-rating-3"></p>
                         </div>
                         <div class="col-2">
-                            <button class="border-0" id="btn-delete-3" onclick="deletePriority(3)">-</button>
+                            <button class="border-0 rounded w-100 h-75 text-center in-btn" id="btn-delete-3"
+                                onclick="deletePriority(3)">-</button>
                         </div>
                     </div>
-                    <div class="border border-bottom-1 rounded-bottom row py-2" id="table-row">
+                    <div class="border border-start-0 border-bottom-0 border-end-0 rounded-bottom row py-2"
+                        id="table-row-4">
                         <div class="col-8">
-                            <p id="pr_4"></p>
+                            <p class="mb-0" id="pr_4"></p>
                         </div>
                         <div class="col-2">
-                            <p id="pr-rating-4"></p>
+                            <p class="mb-0" id="pr-rating-4"></p>
                         </div>
                         <div class="col-2">
-                            <button class="border-0" id="btn-delete-4" onclick="deletePriority(4)">-</button>
+                            <button class="border-0 rounded w-100 h-75 text-center in-btn" id="btn-delete-4"
+                                onclick="deletePriority(4)">-</button>
                         </div>
                     </div>
-                    <div class="d-flex flex-row mt-4 justify-content-center">
-                        <button type="button" class="me-2 border-0" data-bs-toggle="modal" data-bs-target="#addModal" title="Add your priority to the list"
+                    <div class="d-flex flex-row mt-4 justify-content-center priority-btn">
+                        <button type="button" class="me-2 border-0 rounded in-btn" data-bs-toggle="modal"
+                            data-bs-target="#addModal" title="Add your priority to the list"
                             onclick="disableModalBtn()">Add</button>
-                        <button class="me-2 border-0" id="sort-asc-btn" title="Sort your priority from high priority" onclick="sortAsc()">Sort (Asc.)</button>
-                        <button class="me-2 border-0" id="sort-desc-btn" title="Sort your priority from low priority" onclick="sortDesc()">Sort (Desc.</button>
+                        <button class="me-2 border-0 rounded in-btn" id="sort-asc-btn"
+                            title="Sort your priority from high priority" onclick="sortAsc()">Sort (Asc.)</button>
+                        <button class="me-2 border-0 rounded in-btn" id="sort-desc-btn"
+                            title="Sort your priority from low priority" onclick="sortDesc()">Sort (Desc.)</button>                        
                     </div>
-                    <div class="d-flex flex-row mt-4 justify-content-center">
-                        <button class="me-2 border-0" onclick="prevPage()" title="Previous Page" id="prev-btn">
-                            <</button> <p class="me-2" id="pr-page">1</p>
-                                <button class="me-2 border-0" onclick="nextPage()" title="Next Page" id="next-btn">></button>
+                    <div class="d-flex flex-row mt-4 justify-content-center priority-nav-btn">
+                        <div class="container-fluid px-0 " style="height: 40px; width: 200px;">
+                            <div class="row h-100 w-100">
+                                <div class="col-4 px-0">
+                                    <button type="button" class="btn-secondary rounded w-100 h-100 px-0 in-btn"
+                                        onclick="prevPage()" title="Previous Page" id="prev-btn">
+                                        <</button> </div> <div class="col-4 bg-light px-0 ">
+                                            <input type="text" class="text-center w-100 h-100 px-0" value="1"
+                                                id="pr-page" disabled>
+                                </div>
+                                <div class="col-4 px-0 ">
+                                    <button type="button" class="btn-secondary rounded w-100 h-100 px-0 in-btn"
+                                        onclick="nextPage()" title="Next Page" id="next-btn">></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Expense List -->
-            <div class="col-4 px-5 py-5 mx-3 border rounded bg-light shadow-sm" id="exp-list" style="height: 500px; width: 420px;">
+            <div class="col-4 px-5 py-5 mx-3 border-0 rounded shadow first-container-cont" id="exp-list">
                 <h3 class="text-center">My Expense List</h3>
                 <div class="d-flex flex-column">
-                    <div class="border border-bottom-0 rounded-top row py-2" id="table-row">
+                    <div class="border-0 rounded-top row py-2" id="table2-row-0">
                         <div class="col-10">
                             <p id="exp_0"></p>
                         </div>
                         <div class="col-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkExp0">
+                                <input class="form-check-input" type="checkbox" value="" id="checkExp0"
+                                    onclick="ifRadioButtonChecked(0)">
                             </div>
                         </div>
                     </div>
-                    <div class="border border-bottom-0 row py-2" id="table-row">
+                    <div class="border border-bottom-0 border-start-0 border-end-0 row py-2" id="table2-row-1">
                         <div class="col-10">
                             <p id="exp_1"></p>
                         </div>
                         <div class="col-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkExp1">
+                                <input class="form-check-input" type="checkbox" value="" id="checkExp1"
+                                    onclick="ifRadioButtonChecked(1)">
                             </div>
                         </div>
                     </div>
-                    <div class="border border-bottom-0 row py-2" id="table-row">
+                    <div class="border border-bottom-0 border-start-0 border-end-0 row py-2" id="table2-row-2">
                         <div class="col-10">
                             <p id="exp_2"></p>
                         </div>
                         <div class="col-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkExp2">
+                                <input class="form-check-input" type="checkbox" value="" id="checkExp2"
+                                    onclick="ifRadioButtonChecked(2)">
                             </div>
                         </div>
                     </div>
-                    <div class="border border-bottom-0 row py-2" id="table-row">
+                    <div class="border border-bottom-0 border-start-0 border-end-0 row py-2" id="table2-row-3">
                         <div class="col-10">
                             <p id="exp_3"></p>
                         </div>
                         <div class="col-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkExp3">
+                                <input class="form-check-input" type="checkbox" value="" id="checkExp3"
+                                    onclick="ifRadioButtonChecked(3)">
                             </div>
                         </div>
                     </div>
-                    <div class="border border-bottom-1 rounded-bottom row py-2" id="table-row">
+                    <div class="border border-start-0 border-bottom-0 border-end-0 rounded-bottom row py-2"
+                        id="table2-row-4">
                         <div class="col-10">
                             <p id="exp_4"></p>
                         </div>
                         <div class="col-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkExp4">
+                                <input class="form-check-input" type="checkbox" value="" id="checkExp4"
+                                    onclick="ifRadioButtonChecked(4)">
                             </div>
                         </div>
                     </div>
@@ -164,20 +268,23 @@
                         <label for="monthlyIncome">Your monthly income:</label>
                         <div class="d-flex flex-row">
                             <span class="input-group-text">Rp.</span>
-                            <input type="number" class="form-control" id="monthlyIncome">
+                            <input type="number" class="form-control" id="monthlyIncome" placeholder="0"
+                                onfocus="this.placeholder=''" onblur="this.placeholder='0'">
                             <span class="input-group-text">,-</span>
                         </div>
                     </div>
                     <div class="d-flex mt-4 justify-content-center">
-                        <button class="me-2 border-0" id="calc-bal-btn" onclick="generateExpense('1')">Calculate Your Balance</button>
+                        <button class="me-2 border-0 rounded in-btn" id="calc-bal-btn"
+                            onclick="generateExpense('1')">Calculate
+                            Your Balance</button>
                     </div>
                 </div>
             </div>
 
             <!-- Balance table -->
-            <div class="col-4 px-5 py-5 border rounded bg-light shadow-sm" id="bal-list" style="height: 500px; width: 420px;">
+            <div class="col-4 px-5 py-5 border-0 rounded shadow first-container-cont" id="bal-list">
                 <h3 class="text-center">My Balance</h3>
-                <div class="row d-flex flex-row overflow-auto border rounded" style="height: 300px;">
+                <div class="row d-flex flex-row overflow-auto bg-light border rounded" style="height: 300px;">
                     <div class="col-12 d-flex flex-row mt-2">
                         <label id="fade-el-bal1" style="display: none;">Monthly Income:</label>
                         <p class="mx-3" id="monthly-income"></p>
@@ -186,17 +293,161 @@
                     <div class="row d-flex flex-row">
                         <div class="col-6 d-flex flex-column my-3" id="priority-container"></div>
                         <div class="col-6 d-flex flex-column text-end my-3" id="expense-container"></div>
-                    </div>                    
+                    </div>
                     <hr id="fade-el-bal3" style="display: none;">
                     <div class="d-flex flex-row mt-3">
                         <label id="fade-el-bal4" style="display: none;">Balance:</label>
                         <p class="mx-3" id="your-balance"></p>
-                    </div>                    
+                    </div>
                 </div>
-                <div class="d-flex mt-4 justify-content-center flex-row">
-                    <button class="me-2 border-0" id="btn-sort-all-priority" onclick="generateExpense('1')" title="Get your all priority expenses and balance">All Priority</button>
-                    <button class="me-2 border-0" id="btn-sort-low-priority" onclick="sortExpense('1')" title="Get your low priority expenses and balance (1-5)">Low Priority</button>
-                    <button class="me-2 border-0" id="btn-sort-high-priority" onclick="sortExpense('2')" title="Get your high priority expenses and balance (6-10)">High Priority</button>
+                <div class="d-flex mt-4 justify-content-center flex-row balance-btn">
+                    <button class="me-2 border-0 rounded in-btn" id="btn-sort-all-priority"
+                        onclick="generateExpense('1')" title="Get your all priority expenses and balance">All
+                        Priority</button>
+                    <button class="me-2 border-0 rounded in-btn" id="btn-sort-low-priority" onclick="sortExpense('1')"
+                        title="Get your low priority expenses and balance (1-5)">Low Priority</button>
+                    <button class="me-2 border-0 rounded in-btn" id="btn-sort-high-priority" onclick="sortExpense('2')"
+                        title="Get your high priority expenses and balance (6-10)">High Priority</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 mx-4 w-auto second-container">
+            <!-- Container For Chart -->
+            <div class="col-7 px-5 py-5 me-3 border-0 rounded bg-light shadow second-container-cont"
+                id="graph-container" style="height: 500px;">
+                <div class="row d-flex flex-row h-100">
+                    <div class="col-6">
+                        <p class="h3 text-center">High Priority Chart</p>
+                        <canvas class="w-100 h-100 py-3" id="hi-prior-chart">
+                    </div>
+                    <div class="col-6">
+                        <p class="h3 text-center">Low Priority Chart</p>
+                        <canvas class="w-100 h-100 py-3" id="low-prior-chart">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculator -->
+            <div class="col-5 px-5 py-5 border-0 rounded bg-light shadow second-container-cont" id="calc-container"
+                style="height: auto;width: 520px;">
+                <div class="container-fluid h-100 calc-container-cont">
+
+                    <!-- Top Container for calculator -->
+                    <div class="row d-flex flex-column border-0 h-25">
+                        <div class="px-0 h-50">
+                            <input type="text" class="h5 text-end bg-white w-100 h-100 border-0 pe-3" id="calc-output"
+                                maxlength="18" disabled>
+                        </div>
+                        <div class="px-0 h-50">
+                            <input type="text" class="display-6 text-end w-100 h-100 border-0 pe-3" id="calc-input"
+                                value="" maxlength="18" placeholder="0" autocomplete="off" onfocus="this.placeholder=''"
+                                onblur="this.placeholder='0'" onclick="keyboardCalcInput()"
+                                oninput="resetPositionCursorForCalcInput()">
+                        </div>
+                    </div>
+
+                    <!-- Divider between top container and bottom container -->
+                    <div class="row" style="height: 10px; background-color: grey;"></div>
+
+                    <!-- Bottom container for calculator -->
+                    <div class="row h-75 border-0 rounded border-dark bottom-calc-container">
+
+                        <!-- Bottom left container -->
+                        <div class="col-7 px-0 bottom-l-calc-container">
+                            <div class="row text-center border-bottom border-dark w-100 ms-0"
+                                style="height: 20%; width: 231px;">
+                                <div class="col-6 border-end border-dark px-0">
+                                    <button class="w-100 h-100 border-0" id="11-calc-del" onclick="inputCalc(id)"><i
+                                            class="fa-solid fa-delete-left"></i></i></button>
+                                </div>
+                                <div class="col-6 px-0">
+                                    <button class="h4 w-100 h-100 border-0" id="12-calc-delall"
+                                        onclick="inputCalc(id)">AC</i></button>
+                                </div>
+                            </div>
+                            <div class="row text-center border-bottom border-dark w-100 ms-0"
+                                style="height: 20%; width: 231px;">
+                                <div class="col-4 px-0">
+                                    <button class="w-100 h-100 border-0" id="7-calc-num"
+                                        onclick="inputCalc(id)">7</button>
+                                </div>
+                                <div class="col-4 border-start border-end border-dark px-0">
+                                    <button class="w-100 h-100 border-0" id="8-calc-num"
+                                        onclick="inputCalc(id)">8</button>
+                                </div>
+                                <div class="col-4 px-0">
+                                    <button class="w-100 h-100 border-0" id="9-calc-num"
+                                        onclick="inputCalc(id)">9</button>
+                                </div>
+                            </div>
+                            <div class="row text-center border-dark border-bottom w-100 ms-0"
+                                style="height: 20%; width: 231px;">
+                                <div class="col-4 px-0">
+                                    <button class="w-100 h-100 border-0" id="4-calc-num"
+                                        onclick="inputCalc(id)">4</button>
+                                </div>
+                                <div class="col-4 border-start border-end border-dark px-0">
+                                    <button class="w-100 h-100 border-0" id="5-calc-num"
+                                        onclick="inputCalc(id)">5</button>
+                                </div>
+                                <div class="col-4 px-0">
+                                    <button class="w-100 h-100 border-0" id="6-calc-num"
+                                        onclick="inputCalc(id)">6</button>
+                                </div>
+                            </div>
+                            <div class="row text-center border-bottom border-dark w-100 ms-0"
+                                style="height: 20%; width: 231px;">
+                                <div class="col-4 px-0">
+                                    <button class="w-100 h-100 border-0" id="1-calc-num"
+                                        onclick="inputCalc(id)">1</button>
+                                </div>
+                                <div class="col-4 border-start border-end border-dark px-0">
+                                    <button class="w-100 h-100 border-0" id="2-calc-num"
+                                        onclick="inputCalc(id)">2</button>
+                                </div>
+                                <div class="col-4 px-0">
+                                    <button class="w-100 h-100 border-0" id="3-calc-num"
+                                        onclick="inputCalc(id)">3</button>
+                                </div>
+                            </div>
+                            <div class="row text-center ms-0 w-100" style="height: 20%; width: 231px;">
+                                <div class="col-6 border-end border-dark px-0">
+                                    <button class="w-100 h-100 border-0" id="0-calc-num"
+                                        onclick="inputCalc(id)">0</button>
+                                </div>
+                                <div class="col-6 px-0">
+                                    <button class="w-100 h-100 border-0" id="10-calc-num"
+                                        onclick="inputCalc(id)">000</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom right container -->
+                        <div class="col-5 px-0 border-start border-dark bottom-r-calc-container"
+                            id="bottom-r-calc-container">
+                            <div class="text-center border-bottom border-dark" style="height: 20%;">
+                                <button class="w-100 h-100 border-0 bottom-right-calc-btn" id="13-calc-div"
+                                    onclick="onclickCalcBtn(id, ':')"><i class="fa-solid fa-divide"></i></button>
+                            </div>
+                            <div class="text-center border-bottom border-dark" style="height: 20%;">
+                                <button class="w-100 h-100 border-0 bottom-right-calc-btn" id="14-calc-times"
+                                    onclick="onclickCalcBtn(id, '*')"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <div class="text-center border-bottom border-dark" style="height: 20%;">
+                                <button class="w-100 h-100 border-0 bottom-right-calc-btn" id="15-calc-plus"
+                                    onclick="onclickCalcBtn(id, '+')"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <div class="text-center border-bottom border-dark" style="height: 20%;">
+                                <button class="w-100 h-100 border-0 bottom-right-calc-btn" id="16-calc-min"
+                                    onclick="onclickCalcBtn(id, '-')"><i class="fa-solid fa-minus"></i></button>
+                            </div>
+                            <div class="text-center" style="height: 20%;">
+                                <button class="w-100 h-100 border-0 bottom-right-calc-btn" id="17-calc-equal"
+                                    onclick="calculateOutputCalc()"><i class="fa-solid fa-equals"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -215,28 +466,30 @@
                         <form>
                             <div class="form-group">
                                 <label for="namePriority">Add your priority here:</label>
-                                <input type="text" class="form-control" id="namePriority" placeholder="...">
+                                <input type="text" class="form-control" id="namePriority" placeholder="..."
+                                    autocomplete="off" onfocus="this.placeholder=''" onblur="this.placeholder='...'">
                             </div>
                             <div class="form-group mt-3">
                                 <label for="ratePriority">How important this priority:</label>
                                 <select class="form-control" id="ratePriority">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
+                                    <option class="text-center bg-success">1</option>
+                                    <option class="text-center bg-success">2</option>
+                                    <option class="text-center bg-success">3</option>
+                                    <option class="text-center bg-success">4</option>
+                                    <option class="text-center bg-success">5</option>
+                                    <option class="text-center bg-warning">6</option>
+                                    <option class="text-center bg-warning">7</option>
+                                    <option class="text-center bg-warning">8</option>
+                                    <option class="text-center bg-danger">9</option>
+                                    <option class="text-center bg-danger">10</option>
                                 </select>
                             </div>
                             <div class="input-group mt-3 d-flex flex-column">
                                 <label for="expenseNbr">Expense expectance:</label>
                                 <div class="d-flex flex-row">
                                     <span class="input-group-text">Rp.</span>
-                                    <input type="number" class="form-control" id="expenseNbr">
+                                    <input type="number" class="form-control" id="expenseNbr" placeholder="0"
+                                        autocomplete="off" onfocus="this.placeholder=''" onblur="this.placeholder='0'">
                                     <span class="input-group-text">,-</span>
                                 </div>
                             </div>
@@ -251,7 +504,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

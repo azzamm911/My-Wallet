@@ -1,10 +1,9 @@
-priority list    
-    - working checklist
-
-
-calculator
-
-calendar
-
 graph
+    - with balance and income
+
+responsive
+
+clean the code
+
+dark mode
     

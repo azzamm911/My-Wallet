@@ -1,37 +1,224 @@
-@media screen and (max-width: 935px) {
+/************************* Small devices *************************/
+@media screen and (max-width: 1024px) {
 
-    #prior-list, #exp-list, #bal-list {
+    #prior-list,
+    #exp-list,
+    #bal-list,
+    #graph-container,
+    #calc-container {
         width: 100% !important;
     }
 
-    #exp-list, #bal-list {
-        margin-top: 5%;
+    #exp-list {
+        margin: 10px 0 10px 0 !important;
     }
 
-    #exp-list {
-        margin-left: 0 !important;
+    #graph-container {
+        margin-bottom: 10px !important;
     }
 }
 
-@media screen and (max-width: 1355px) {
+@media screen and (min-width: 320px) {
 
-    #prior-list, #exp-list, #bal-list {
-        width: 100% !important;
+    #prior-list,
+    #bal-list,
+    #calc-bal-btn {
+        height: fit-content;
     }
 
-    #exp-list,#bal-list {
-        margin-top: 5%;
+    .priority-btn,
+    .balance-btn {
+        flex-direction: column !important;
+    }
+
+    .priority-btn button,
+    .balance-btn button {
+        margin-bottom: 10px;
+    }
+
+    .priority-nav-btn {
+        margin: auto;
+    }
+
+    #calc-container {
+        margin-bottom: 20px !important;
+        padding: 10px 0 10px 0 !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    #calc-container {
+        height: 300px !important;
+    }
+
+    .calc-container-cont {
+        width: 60% !important;
+        padding-bottom: 10px;
+    }
+}
+
+/************************* Medium to big devices *************************/
+
+@media screen and (min-width: 768px) {
+
+    .first-container {
+        margin-top: 30px !important;
+    }
+
+    #prior-list,
+    #exp-list {
+        width: 48% !important;
+        height: 600px !important;
+    }
+
+    #bal-list {
+        width: 90% !important;
+        margin: 30px auto 0 auto !important;
     }
 
     #exp-list {
+        margin: 0 0 0 10px !important;
+    }
+
+    .balance-btn {
+        flex-direction: row !important;
+    }
+
+    #graph-container {
+        width: 60% !important;
+    }
+
+    #graph-container {
+        width: 100% !important;
+    }
+
+    #calc-container {
+        width: 60% !important;
+        margin: 0 auto !important;
+    }
+
+    .calc-container-cont {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .priority-btn {
+        flex-direction: row !important;
+    }
+
+    #graph-container,
+    #calc-container {
+        height: 500px !important;
+    }
+
+    #graph-container {
+        width: 53% !important;
+        margin-bottom: 30px !important;
+    }
+
+    #calc-container {
+        width: 43% !important;
         margin-left: 0 !important;
-        margin-right: 0 !important;
+    }
+
+    .calc-container-cont {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+
+    #prior-list,
+    #exp-list,
+    #bal-list {
+        width: 32% !important;
+        height: 500px !important;
+    }
+
+    #bal-list {
+        margin: 0 !important;
+    }
+
+    #exp-list {
+        margin: 0 10px !important;
+    }
+
+    #graph-container {
+        width: 62% !important;
+        margin-bottom: 30px !important;
+    }
+
+    #calc-container {
+        width: 34.5% !important;
+    }
+
+}
+
+@media screen and (min-width: 1366px) {
+
+    #prior-list,
+    #exp-list,
+    #bal-list {
+        width: 32% !important;
+        height: 600px !important;
+    }
+
+    #bal-list {
+        margin: 0 !important;
+    }
+
+    #exp-list {
+        margin: 0 10px !important;
+    }
+
+    #calc-container {
+        width: 32.5% !important;
+        margin-left: 0 !important;
+    }
+
+    #graph-container {
+        width: 64% !important;
+    }
+
+    #hi-prior-chart,
+    #low-prior-chart {
+        height: 400px !important;
     }
 }
 
 @media screen and (min-width: 1440px) {
 
-    #prior-list, #exp-list, #bal-list {
-        width: 450px !important;
-    }        
+    #prior-list,
+    #exp-list,
+    #bal-list {
+        width: 32% !important;
+        height: 600px !important;
+    }
+
+    #exp-list {
+        margin: 0 10px !important;
+    }
+
+    #bal-list {
+        margin: 0 !important;
+    }
+
+    #calc-container {
+        width: 30.5% !important;
+        margin-left: 0 !important;
+    }
+
+    #graph-container {
+        width: 66% !important;
+    }
+
+    #hi-prior-chart,
+    #low-prior-chart {
+        height: 400px !important;
+    }
 }
